@@ -37,7 +37,11 @@ async function addContact() {
     await fetch("https://contactbook-47lo.onrender.com/contacts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, category })
+        body: JSON.stringify({
+            name,
+            phone,
+            category: category.toLowerCase() // normalize
+        })
     });
 
     loadContacts();
@@ -64,7 +68,7 @@ document.getElementById("search").addEventListener("input", async (e) => {
     displayContacts(filtered);
 });
 
-// Category filter
+// Category filter (FIXED)
 async function filterCategory(cat) {
     let res = await fetch("https://contactbook-47lo.onrender.com/contacts");
     let data = await res.json();
@@ -72,6 +76,10 @@ async function filterCategory(cat) {
     if (cat === "All") {
         displayContacts(data);
     } else {
-        displayContacts(data.filter(c => c.category === cat));
+        displayContacts(
+            data.filter(c =>
+                c.category.toLowerCase() === cat.toLowerCase()
+            )
+        );
     }
 }
