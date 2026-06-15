@@ -2,7 +2,7 @@ window.onload = loadContacts;
 
 // Load contacts
 async function loadContacts() {
-    let res = await fetch("http://localhost:5000/contacts");
+    let res = await fetch("https://contactbook-47lo.onrender.com/contacts");
     let data = await res.json();
     displayContacts(data);
 }
@@ -34,7 +34,7 @@ async function addContact() {
         return;
     }
 
-    await fetch("http://localhost:5000/contacts", {
+    await fetch("https://contactbook-47lo.onrender.com/contacts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, phone, category })
@@ -45,7 +45,7 @@ async function addContact() {
 
 // Delete contact
 async function deleteContact(id) {
-    await fetch(`http://localhost:5000/contacts/${id}`, {
+    await fetch(`https://contactbook-47lo.onrender.com/contacts/${id}`, {
         method: "DELETE"
     });
 
@@ -54,7 +54,7 @@ async function deleteContact(id) {
 
 // Search
 document.getElementById("search").addEventListener("input", async (e) => {
-    let res = await fetch("http://localhost:5000/contacts");
+    let res = await fetch("https://contactbook-47lo.onrender.com/contacts");
     let data = await res.json();
 
     let filtered = data.filter(c =>
@@ -66,7 +66,7 @@ document.getElementById("search").addEventListener("input", async (e) => {
 
 // Category filter
 async function filterCategory(cat) {
-    let res = await fetch("http://localhost:5000/contacts");
+    let res = await fetch("https://contactbook-47lo.onrender.com/contacts");
     let data = await res.json();
 
     if (cat === "All") {
