@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>📒 Contact Book</h1>
+
+    <input type="text" id="search" placeholder="🔍 Search contacts...">
+
+    <div class="tabs">
+        <button onclick="filterCategory('All')">All</button>
+        <button onclick="filterCategory('Family')">Family</button>
+        <button onclick="filterCategory('Friends')">Friends</button>
+        <button onclick="filterCategory('Work')">Work</button>
+    </div>
+
+    <div id="contact-list"></div>
+
+    <button class="add-btn" onclick="addContact()">+ Add Contact</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
